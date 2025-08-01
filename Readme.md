@@ -22,7 +22,7 @@ This project is a simple Python script that scrapes court case information from 
 1. **Clone the Repository**
 ```
 
-git clone [https://github.com/your-username/ecourts-case-scraper.git](https://github.com/your-username/ecourts-case-scraper.git)
+git clone [https://github.com/Miriyala-Rajababu/Court-Case-Fetcher.git]
 cd ecourts-case-scraper
 
 ```
