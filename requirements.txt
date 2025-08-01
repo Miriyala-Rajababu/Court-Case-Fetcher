@@ -1,0 +1,32 @@
+Here’s a simple `requirements.txt` file for your **eCourts Case Scraper** project:
+
+```
+requests
+beautifulsoup4
+python-dotenv
+sqlite3 ; python_version < '3.11'
+```
+
+### Optional (if you use these):
+
+If you plan to add CAPTCHA solving or testing later, you can include:
+
+```
+pytesseract     # For OCR if handling CAPTCHA
+opencv-python   # For image processing (CAPTCHA)
+pytest          # For unit testing
+```
+
+So a complete version with optional tools looks like this:
+
+```
+requests
+beautifulsoup4
+python-dotenv
+pytesseract
+opencv-python
+pytest
+```
+
+> ✅ Save this as `requirements.txt` in the root directory of your project.
+> Let me know if you want me to include only specific libraries you're using.

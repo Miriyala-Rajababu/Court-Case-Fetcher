@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Court Data Fetcher</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 320px;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .case-result {
+      background-color: #fff;
+      padding: 20px 30px;
+      margin-top: 20px;
+      border-radius: 8px;
+      width: 320px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .case-result h3 {
+      margin-top: 0;
+    }
+
+    .case-result a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    .case-result a:hover {
+      text-decoration: underline;
+    }
+
+    .error {
+      color: red;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Search Court Case</h2>
+
+  <form method="POST" action="/search">
+    <label>Case Type:</label>
+    <select name="case_type" required>
+      <option value="C">Civil</option>
+      <option value="CR">Criminal</option>
+    </select>
+
+    <label>Case Number:</label>
+    <input type="text" name="case_number" required />
+
+    <label>Filing Year:</label>
+    <input type="text" name="year" required />
+    
+
+    <button type="submit">Fetch Case</button>
+  </form>
+
+  {% if result %}
+    <div class="case-result">
+      <h3>Case Details</h3>
+      <p><strong>Parties:</strong> {{ result.parties }}</p>
+      <p><strong>Filing Date:</strong> {{ result.filing_date }}</p>
+      <p><strong>Next Hearing:</strong> {{ result.next_hearing }}</p>
+      <a href="{{ result.pdf_link }}" target="_blank">Download Latest Order</a>
+    </div>
+  {% elif error %}
+    <p class="error">{{ error }}</p>
+  {% endif %}
+</body>
+</html>
